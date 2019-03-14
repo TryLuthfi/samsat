@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_alignParentLeft="true"
+    android:layout_alignParentStart="true"
+    android:layout_alignParentTop="true"
+    android:background="@android:color/transparent"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:id="@+id/satuuu"
+        android:background="@android:color/transparent"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"></RelativeLayout>
+
+    <RelativeLayout
+        android:layout_below="@id/satuuu"
+        android:layout_marginTop="-40dp"
+        android:layout_width="match_parent"
+        android:id="@+id/satu"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:layout_marginTop="0dp"
+            android:layout_width="wrap_content"
+            android:layout_height="70dp"
+            android:id="@+id/gambar"
+            android:layout_gravity="center|top"
+            android:src="@drawable/seru" />
+
+        <TextView
+            android:layout_below="@id/gambar"
+            android:id="@+id/bawahegambar"
+            android:textStyle="bold"
+            android:textColor="#000"
+            android:layout_marginTop="10dp"
+            android:textSize="20sp"
+            android:gravity="center"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <TextView
+            android:layout_below="@id/bawahegambar"
+            android:layout_marginTop="10dp"
+            android:gravity="center"
+            android:paddingHorizontal="40dp"
+            android:id="@+id/jjj"
+            android:textSize="18sp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            />
+    </RelativeLayout>
+
+
+
+
+    <LinearLayout
+        android:layout_marginTop="20dp"
+        android:layout_below="@+id/satu"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:layout_marginHorizontal="10dp"
+        android:background="@android:color/white">
+
+        <Button
+            android:id="@+id/oke"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="15sp"
+            android:text="Oke"
+            android:textColor="#fff" />
+
+    </LinearLayout>
+</RelativeLayout>
