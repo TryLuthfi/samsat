@@ -64,41 +64,6 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductV
                 intent.putExtra("statusBpkb", product.getStatusBpkb());
                 mCtx.startActivity(intent);
 
-                /*final Dialog alertDialog = new Dialog(mCtx);
-                alertDialog.setCancelable(true);
-                alertDialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
-                alertDialog.setCanceledOnTouchOutside(true);
-                alertDialog.setContentView(R.layout.custom_dialog);
-//                TextView bpkb = alertDialog.findViewById(R.id.bpkb);
-                TextView plat = alertDialog.findViewById(R.id.plat);
-                TextView pengurusan = alertDialog.findViewById(R.id.pengurusan);
-                TextView tanggal = alertDialog.findViewById(R.id.tanggal);
-                TextView status = alertDialog.findViewById(R.id.status);
-                final TextView ket_status = alertDialog.findViewById(R.id.ket_status);
-                TextView rincian_surat = alertDialog.findViewById(R.id.rincian_surat);
-//                bpkb.setText(""+product.getJenis_surat());
-                plat.setText("" + product.getNo_plat());
-                pengurusan.setText("" + product.getJenis_pengurusan());
-                tanggal.setText("" + product.getTgl_transaksi());
-                rincian_surat.setText("" + product.getRincian_surat());
-                status.setText("" + product.getStatus());
-                ket_status.setText("" + product.getId_pelanggan());
-                Button btnDone = (Button) alertDialog.findViewById(R.id.custom_dialog_btn_done);
-                Button btnGone = (Button) alertDialog.findViewById(R.id.custom_dialog_btn_gone);
-
-                btnDone.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        alertDialog.dismiss();
-                    }
-                });
-                btnGone.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        addData(product.getId_transaksi());
-                    }
-                });
-                alertDialog.show();*/
 
             }
         });

@@ -218,6 +218,7 @@ public class ChangeProfile extends AppCompatActivity {
         AddData ae = new AddData();
         ae.execute();
     }
+
     private String getIdPelanggan(){
         SharedPreferences preferences = getSharedPreferences("Settings", Context.MODE_PRIVATE);
         String id_pelanggan = preferences.getString("id_pelanggan", "null");

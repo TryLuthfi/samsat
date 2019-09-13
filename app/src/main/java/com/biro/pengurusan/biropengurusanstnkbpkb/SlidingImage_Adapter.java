@@ -8,19 +8,21 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 
+import com.bumptech.glide.Glide;
+
 import java.util.ArrayList;
 
 public class SlidingImage_Adapter extends PagerAdapter {
 
 
-    private ArrayList<ImageModel> imageModelArrayList;
+    private String[] urls;
     private LayoutInflater inflater;
     private Context context;
 
 
-    public SlidingImage_Adapter(Context context, ArrayList<ImageModel> imageModelArrayList) {
+    public SlidingImage_Adapter(Context context, String[] urls) {
         this.context = context;
-        this.imageModelArrayList = imageModelArrayList;
+        this.urls = urls;
         inflater = LayoutInflater.from(context);
     }
 
@@ -31,7 +33,7 @@ public class SlidingImage_Adapter extends PagerAdapter {
 
     @Override
     public int getCount() {
-        return imageModelArrayList.size();
+        return urls.length;
     }
 
     @Override
@@ -43,7 +45,9 @@ public class SlidingImage_Adapter extends PagerAdapter {
                 .findViewById(R.id.image);
 
 
-        imageView.setImageResource(imageModelArrayList.get(position).getImage_drawable());
+        Glide.with(context)
+                .load(urls[position])
+                .into(imageView);
 
         view.addView(imageLayout, 0);
 

@@ -34,25 +34,21 @@ import static com.biro.pengurusan.biropengurusanstnkbpkb.konfigurasi.KEY_EMP_ID_
 
 public class Home extends AppCompatActivity {
 
-//    private String url = "http://samsat109.000webhostapp.com/notife.php";
-    private String url = "http://myindosnack.com/samsat/api/notife.php";
-    String tag_json_obj = "json_obj_req";
-
     private static ViewPager mPager;
     private static int currentPage = 0;
-    private ImageView tentang;
     private static int NUM_PAGES = 0;
-    private ArrayList<ImageModel> imageModelArrayList;
+
+    private ImageView tentang;
     String id_transaksi,id_pelanggan , tgl_transaksi, tanggal,
             jenis_surat, no_plat, tanggal_selesai, status, notife, notifesurat, notifeproses, notifesiap;
     int bulan;
 
     private String JSON_STRING;
-
-    private int[] myImageList = new int[]{R.drawable.samsat, R.drawable.samsat,
-            R.drawable.samsat};
     Button button;
     String tahun, date, bulan_tampil2;
+
+    private String[] urls = new String[] {"https://demonuts.com/Demonuts/SampleImages/W-03.JPG", "https://demonuts.com/Demonuts/SampleImages/W-08.JPG", "https://demonuts.com/Demonuts/SampleImages/W-10.JPG",
+            "https://demonuts.com/Demonuts/SampleImages/W-13.JPG", "https://demonuts.com/Demonuts/SampleImages/W-17.JPG", "https://demonuts.com/Demonuts/SampleImages/W-21.JPG"};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -60,8 +56,6 @@ public class Home extends AppCompatActivity {
         setContentView(R.layout.activity_home);
 
         tentang = (ImageView) findViewById(R.id.about);
-        imageModelArrayList = new ArrayList<>();
-        imageModelArrayList = populateList();
 
         final Handler handler = new Handler();
         handler.postDelayed(new Runnable() {
@@ -79,26 +73,58 @@ public class Home extends AppCompatActivity {
         init();
     }
 
-    private void Clicked() {
-        Intent resultIntent = new Intent(this, Home.class);
-        resultIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-        PendingIntent piResult = PendingIntent.getActivity(this, (int) Calendar.getInstance().getTimeInMillis(), resultIntent, 0);
-        NotificationCompat.InboxStyle inboxStyle = new NotificationCompat.InboxStyle();
+    private void init() {
 
+        mPager = (ViewPager) findViewById(R.id.pager);
+        mPager.setAdapter(new SlidingImage_Adapter(Home.this,urls));
 
-    }
+        CirclePageIndicator indicator = (CirclePageIndicator)
+                findViewById(R.id.indicator);
 
-    private ArrayList<ImageModel> populateList() {
+        indicator.setViewPager(mPager);
 
-        ArrayList<ImageModel> list = new ArrayList<>();
+        final float density = getResources().getDisplayMetrics().density;
 
-        for (int i = 0; i < myImageList.length; i++) {
-            ImageModel imageModel = new ImageModel();
-            imageModel.setImage_drawable(myImageList[i]);
-            list.add(imageModel);
-        }
+        indicator.setRadius(5 * density);
 
-        return list;
+        NUM_PAGES = urls.length;
+
+        final Handler handler = new Handler();
+        final Runnable Update = new Runnable() {
+            public void run() {
+                if (currentPage == NUM_PAGES) {
+                    currentPage = 0;
+                }
+                mPager.setCurrentItem(currentPage++, true);
+            }
+        };
+        Timer swipeTimer = new Timer();
+        swipeTimer.schedule(new TimerTask() {
+            @Override
+            public void run() {
+                handler.post(Update);
+            }
+        }, 3000, 3000);
+
+        indicator.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+
+            @Override
+            public void onPageSelected(int position) {
+                currentPage = position;
+
+            }
+
+            @Override
+            public void onPageScrolled(int pos, float arg1, int arg2) {
+
+            }
+
+            @Override
+            public void onPageScrollStateChanged(int pos) {
+
+            }
+        });
+
     }
 
 
@@ -337,19 +363,15 @@ public class Home extends AppCompatActivity {
 
         class AddData extends AsyncTask<Void, Void, String> {
 
-//            ProgressDialog loading;
 
             @Override
             protected void onPreExecute() {
                 super.onPreExecute();
-//                loading = ProgressDialog.show(Home.this, "Mengambil Data...", "Mohon Tunggu...", false, false);
             }
 
             @Override
             protected void onPostExecute(String s) {
                 super.onPostExecute(s);
-//                loading.dismiss();
-//                Toast.makeText(Home.this, s, Toast.LENGTH_LONG).show();
             }
 
             @Override
@@ -367,64 +389,6 @@ public class Home extends AppCompatActivity {
         ae.execute();
         return id_transaksi;
     }
-
-    private void init() {
-
-        mPager = (ViewPager) findViewById(R.id.pager);
-        mPager.setAdapter(new SlidingImage_Adapter(Home.this, imageModelArrayList));
-
-        CirclePageIndicator indicator = (CirclePageIndicator)
-                findViewById(R.id.indicator);
-
-        indicator.setViewPager(mPager);
-
-        final float density = getResources().getDisplayMetrics().density;
-
-//Set circle indicator radius
-        indicator.setRadius(5 * density);
-
-        NUM_PAGES = imageModelArrayList.size();
-
-        // Auto start of viewpager
-        final Handler handler = new Handler();
-        final Runnable Update = new Runnable() {
-            public void run() {
-                if (currentPage == NUM_PAGES) {
-                    currentPage = 0;
-                }
-                mPager.setCurrentItem(currentPage++, true);
-            }
-        };
-        Timer swipeTimer = new Timer();
-        swipeTimer.schedule(new TimerTask() {
-            @Override
-            public void run() {
-                handler.post(Update);
-            }
-        }, 3000, 3000);
-
-        // Pager listener over indicator
-        indicator.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
-
-            @Override
-            public void onPageSelected(int position) {
-                currentPage = position;
-
-            }
-
-            @Override
-            public void onPageScrolled(int pos, float arg1, int arg2) {
-
-            }
-
-            @Override
-            public void onPageScrollStateChanged(int pos) {
-
-            }
-        });
-
-    }
-
 
     public void regis(View view) {
         Intent intent = new Intent(this, Register.class);
