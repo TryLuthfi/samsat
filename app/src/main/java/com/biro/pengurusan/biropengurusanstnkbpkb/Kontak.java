@@ -39,7 +39,6 @@ public class Kontak extends AppCompatActivity {
     }
 
     public void onBackPressed(){
-
     }
 
     private void showData() {
@@ -97,4 +96,6 @@ public class Kontak extends AppCompatActivity {
         GetJSON gj = new GetJSON();
         gj.execute();
     }
+
+
 }

@@ -173,7 +173,7 @@ public class StatusPreview extends AppCompatActivity {
         }
     }
     public void CekBpkb(){
-        if (mPostKeyStatusBpkb.equals("belumdiambil")){
+        if (mPostKeyStatusBpkb.equals("Belum Diambil")){
             ambilBpkb.setVisibility(View.VISIBLE);
         } else{
             ambilBpkb.setVisibility(View.INVISIBLE);
@@ -214,7 +214,7 @@ public class StatusPreview extends AppCompatActivity {
                 params.put(KEY_EMP_ID_TRANSAKSI, id_transaksi);
 
                 RequestHandler rh = new RequestHandler();
-                String res = rh.sendPostRequest(konfigurasi.URL_GET_CHANGEBPKB, params);
+                String res = rh.sendPostRequest(konfigurasi.URL_GET_CHANGESTATUS, params);
                 return res;
             }
         }

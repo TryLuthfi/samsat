@@ -11,6 +11,7 @@ public class konfigurasi {
     public static final String URL_GET_NORMALSURAT = "http://myindosnack.com/samsat/api/changesurat.php";
     public static final String URL_GET_CHANGEPROSES = "http://myindosnack.com/samsat/api/changeproses.php";
     public static final String URL_GET_CHANGEBPKB = "http://myindosnack.com/samsat/api/changebpkb.php";
+    public static final String URL_GET_CHANGESTATUS = "http://myindosnack.com/samsat/api/changestatus.php";
     public static final String URL_GET_NORMALSURAT_TANGGAL = "http://myindosnack.com/samsat/api/changesurattanggal.php";
     public static final String URL_GET_NORMALPROSES = "http://myindosnack.com/samsat/api/changefromproses.php";
     public static final String URL_GET_NORMALSIAP = "http://myindosnack.com/samsat/api/changefromsiap.php";

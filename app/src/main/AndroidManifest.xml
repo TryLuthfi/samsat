@@ -28,6 +28,7 @@
             android:screenOrientation="portrait" />
         <activity
             android:name="com.biro.pengurusan.biropengurusanstnkbpkb.Home"
+            android:noHistory="true"
             android:screenOrientation="portrait" />
         <activity
             android:name="com.biro.pengurusan.biropengurusanstnkbpkb.Status"
